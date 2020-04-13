@@ -37,6 +37,10 @@ export function addLinkSnippet(link) {
   store.dispatch(actions.addLinkSnippet(link));
 }
 
+export function addCarousel(elements) {
+  store.dispatch(actions.addCarousel(elements));
+}
+
 export function addVideoSnippet(video) {
   store.dispatch(actions.addVideoSnippet(video));
 }

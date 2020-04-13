@@ -115,6 +115,14 @@ export function addLinkSnippet(link) {
   };
 }
 
+export function addCarousel(elements) {
+  return {
+    type: actions.ADD_NEW_CAROUSEL,
+    elements
+  };
+}
+
+
 export function addVideoSnippet(video) {
   return {
     type: actions.ADD_NEW_VIDEO_VIDREPLY,
@@ -264,4 +272,3 @@ export function setCustomCss(customCss) {
     customCss
   };
 }
-

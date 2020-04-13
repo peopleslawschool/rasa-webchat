@@ -1,7 +1,8 @@
 import { Map, fromJS } from 'immutable';
 import { MESSAGES_TYPES, MESSAGE_SENDER, SESSION_NAME } from 'constants';
 
-import { Video, Image, Message, Snippet, QuickReply } from 'messagesComponents';
+import { Video, Image, Message, Snippet, QuickReply, Carousel } from 'messagesComponents';
+
 
 export function createNewMessage(text, sender) {
   return Map({
@@ -22,6 +23,18 @@ export function createLinkSnippet(link, sender) {
     link: link.link,
     content: link.content,
     target: link.target || '_blank',
+    sender,
+    showAvatar: true,
+    timestamp: new Date().getTime()
+  });
+}
+
+
+export function createCarousel(elements, sender) {
+  return Map({
+    type: MESSAGES_TYPES.CAROUSEL,
+    component: Carousel,
+    elements: fromJS(elements),
     sender,
     showAvatar: true,
     timestamp: new Date().getTime()

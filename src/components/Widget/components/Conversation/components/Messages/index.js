@@ -4,9 +4,10 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 
 import { MESSAGES_TYPES } from 'constants';
-import { Video, Image, Message, Snippet, QuickReply } from 'messagesComponents';
+import { Video, Image, Message, Snippet, QuickReply, Carousel } from 'messagesComponents';
 
 import './styles.scss';
+
 
 const isToday = (date) => {
   const today = new Date();
@@ -46,6 +47,9 @@ class Messages extends Component {
         }
         case MESSAGES_TYPES.SNIPPET.LINK: {
           return Snippet;
+        }
+        case MESSAGES_TYPES.CAROUSEL: {
+          return Carousel;
         }
         case MESSAGES_TYPES.VIDREPLY.VIDEO: {
           return Video;

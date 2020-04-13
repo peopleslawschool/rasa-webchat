@@ -1,0 +1,81 @@
+$elementWidth: 250px;
+
+@import "variables.scss";
+.#{$namespace}widget-wrapper-css {
+
+  @import "common.scss";
+
+  .#{$namespace}conversation-container {
+
+    $ns: "rw-carousel";
+
+    .#{$ns}-container {
+      width: 100%;
+    }
+
+    .#{$ns}-inner {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .#{$ns}-elementsScroll {
+      margin: 0 -8px;
+    }
+
+    .#{$ns}-elements {
+      display: flex;
+      transition: left .5s ease-in-out;
+      position: relative;
+    }
+
+    .#{$ns}-elementWrapper {
+      padding: 0 8px;
+      width: $elementWidth;
+      box-sizing: border-box;
+      flex: 0 0 auto;
+    }
+
+    .#{$ns}-nav {
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1;
+    }
+
+    .#{$ns}-navButtonHolder {
+      width: 30px;
+      height: 30px;
+    }
+
+    .#{$ns}-navButton {
+      pointer-events: all;
+      background-color: white;
+      width: 30px;
+      height: 30px;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      color: #686E7C;
+      border: 1px solid #dddfe2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .#{$ns}-navButton-prev {
+      border-radius: 0 7px 7px 0;
+    }
+
+    .#{$ns}-navButton-next {
+      border-radius: 7px 0 0 7px;
+    }
+
+
+  }
+}

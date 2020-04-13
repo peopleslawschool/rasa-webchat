@@ -11,6 +11,7 @@ import {
   emitUserMessage,
   addResponseMessage,
   addLinkSnippet,
+  addCarousel,
   addVideoSnippet,
   addImageSnippet,
   addQuickReply,
@@ -35,7 +36,7 @@ import {
 } from 'actions';
 
 import { SESSION_NAME, NEXT_MESSAGE } from 'constants';
-import { isSnippet, isVideo, isImage, isQR, isText } from './msgProcessor';
+import { isSnippet, isVideo, isImage, isQR, isText, isCarousel } from './msgProcessor';
 import WidgetLayout from './layout';
 import { storeLocalSession, getLocalSession } from '../../store/reducers/helper';
 
@@ -484,6 +485,10 @@ class Widget extends Component {
       this.props.dispatch(addResponseMessage(messageClean.text));
     } else if (isQR(messageClean)) {
       this.props.dispatch(addQuickReply(messageClean));
+    } else if (isCarousel(messageClean)) {
+      this.props.dispatch(
+        addCarousel(messageClean.attachment.payload.elements)
+      );
     } else if (isSnippet(messageClean)) {
       const element = messageClean.attachment.payload.elements[0];
       this.props.dispatch(
