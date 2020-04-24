@@ -562,6 +562,7 @@ class Widget extends Component {
         displayUnreadCount={this.props.displayUnreadCount}
         showMessageDate={this.props.showMessageDate}
         tooltipPayload={this.props.tooltipPayload}
+        disableComposer={this.props.disableComposer}
       />
     );
   }
@@ -613,7 +614,8 @@ Widget.propTypes = {
   disableTooltips: PropTypes.bool,
   defaultHighlightAnimation: PropTypes.string,
   defaultHighlightCss: PropTypes.string,
-  defaultHighlightClassname: PropTypes.string
+  defaultHighlightClassname: PropTypes.string,
+  disableComposer: PropTypes.bool
 };
 
 Widget.defaultProps = {

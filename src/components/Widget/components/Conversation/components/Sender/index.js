@@ -11,17 +11,17 @@ const Sender = ({
   inputTextFieldHint,
   disabledInput,
   userInput,
-  showPersistentMenu
+  showPersistentMenu,
+  disableComposer
 }) => {
   if (userInput === 'hide') return <div />;
-  const disabledComposer = showPersistentMenu;
   return (
     <form className="rw-sender" onSubmit={sendMessage}>
       {showPersistentMenu ? (
         <PersistentMenu />
       ) : null}
 
-      {disabledComposer ? (
+      {disableComposer ? (
         <input
           type="text"
           className="rw-new-message"
@@ -55,7 +55,6 @@ const mapStateToProps = state => ({
   inputTextFieldHint: state.behavior.get('inputTextFieldHint'),
   userInput: state.metadata.get('userInput'),
   showPersistentMenu: state.persistentMenu.items.length > 0
-
 });
 
 Sender.propTypes = {
@@ -63,7 +62,8 @@ Sender.propTypes = {
   inputTextFieldHint: PropTypes.string,
   disabledInput: PropTypes.bool,
   userInput: PropTypes.string,
-  showPersistentMenu: PropTypes.bool
+  showPersistentMenu: PropTypes.bool,
+  disableComposer: PropTypes.bool
 };
 
 export default connect(mapStateToProps)(Sender);
