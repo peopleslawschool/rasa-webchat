@@ -99,7 +99,8 @@ const ConnectedWidget = forwardRef((props, ref) => {
       sock,
       storage,
       props.docViewer,
-      props.onWidgetEvent
+      props.onWidgetEvent,
+      props.persistentMenuItems,
     );
     store.socketRef = sock.marker;
   }
@@ -222,7 +223,8 @@ ConnectedWidget.defaultProps = {
     onChatVisible: () => {},
     onChatHidden: () => {}
   },
-  disableTooltips: false
+  disableTooltips: false,
+  persistentMenuItems: []
 };
 
 export default ConnectedWidget;

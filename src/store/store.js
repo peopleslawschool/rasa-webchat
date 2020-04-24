@@ -5,6 +5,7 @@ import { SESSION_NAME } from 'constants';
 import behavior from './reducers/behaviorReducer';
 import messages from './reducers/messagesReducer';
 import metadata from './reducers/metadataReducer';
+import persistentMenu from './reducers/persistentMenuReducer';
 
 import { getLocalSession } from './reducers/helper';
 import * as actionTypes from './actions/actionTypes';
@@ -27,6 +28,7 @@ function initStore(
   storage,
   docViewer = false,
   onWidgetEvent,
+  persistentMenuItems,
 ) {
   const customMiddleWare = store => next => (action) => {
     let sessionId = getLocalSession(storage, SESSION_NAME)
@@ -123,7 +125,8 @@ function initStore(
   const reducer = combineReducers({
     behavior: behavior(hintText, connectingText, storage, docViewer, onWidgetEvent),
     messages: messages(storage),
-    metadata: metadata(storage)
+    metadata: metadata(storage),
+    persistentMenu: persistentMenu(persistentMenuItems)
   });
 
 
