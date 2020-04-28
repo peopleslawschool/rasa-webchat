@@ -1,3 +1,14 @@
+# Rasa Webchat for People's Law School
+
+## Customizations
+
+1. Supports cards (aka carousels)
+2. Supports interstitial text between cards and buttons
+3. Various stylesheet improvements
+
+
+# Original project Readme below
+
 <p align="center">
 
 <a href="https://www.npmjs.com/package/botfront">
