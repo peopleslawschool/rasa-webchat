@@ -40,6 +40,8 @@ const plugin = {
         defaultHighlightCss={args.defaultHighlightCss}
         defaultHighlightAnimation={args.defaultHighlightAnimation}
         defaultHighlightClassname={args.defaultHighlightClassname}
+        persistentMenuItems={args.persistentMenuItems}
+        disableComposer={args.disableComposer}
       />, document.querySelector(args.selector)
     );
   }
@@ -57,4 +59,3 @@ export {
   isVisible,
   send
 };
-
