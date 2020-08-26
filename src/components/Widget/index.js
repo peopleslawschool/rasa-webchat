@@ -563,6 +563,7 @@ class Widget extends Component {
         showMessageDate={this.props.showMessageDate}
         tooltipPayload={this.props.tooltipPayload}
         disableComposer={this.props.disableComposer}
+        counterText={this.props.counterText}
       />
     );
   }

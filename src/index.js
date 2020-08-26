@@ -138,6 +138,7 @@ const ConnectedWidget = forwardRef((props, ref) => {
         defaultHighlightAnimation={props.defaultHighlightAnimation}
         defaultHighlightClassname={props.defaultHighlightClassname}
         disableComposer={props.disableComposer}
+        counterText={props.counterText}
       />
     </Provider>
   );
@@ -226,7 +227,15 @@ ConnectedWidget.defaultProps = {
   },
   disableTooltips: false,
   disableComposer: false,
-  persistentMenuItems: []
+  persistentMenuItems: [],
+  counterText: (count) => {
+    if (count === 1) return `${count} character`;
+    if (count >= 1) return `${count} characters`;
+    if (count >= 80) return `${count} characters. Keep it short to help me understand.`;
+    return '';
+  },
+  counterLimit: 80
+
 };
 
 export default ConnectedWidget;

@@ -42,6 +42,7 @@ const plugin = {
         defaultHighlightClassname={args.defaultHighlightClassname}
         persistentMenuItems={args.persistentMenuItems}
         disableComposer={args.disableComposer}
+        counterText={args.counterText}
       />, document.querySelector(args.selector)
     );
   }

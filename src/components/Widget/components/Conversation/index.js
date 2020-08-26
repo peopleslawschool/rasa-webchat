@@ -31,6 +31,7 @@ const Conversation = props =>
       sendMessage={props.sendMessage}
       disabledInput={props.disabledInput}
       disableComposer={props.disableComposer}
+      counterText={props.counterText}
     />
   </div>;
 

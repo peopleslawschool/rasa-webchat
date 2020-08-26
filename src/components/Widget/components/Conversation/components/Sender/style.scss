@@ -5,13 +5,18 @@
 
   .#{$namespace}conversation-container {
     .#{$namespace}sender {
-      align-items: center;
+      align-items: flex-start;
       display: flex;
       background-color: $grey-2;
       height: 45px;
       padding: 5px;
     }
-    
+
+    .#{$namespace}input-holder {
+      flex: 1 1 auto;
+      padding-top: 2px;
+    }
+
     .#{$namespace}new-message {
       font-size: 1em;
       width: 100%;
@@ -20,29 +25,44 @@
       height: 30px;
       padding-left: 15px;
       font-family: $fontfamily;
-    
+      box-sizing: border-box;
+
       &:focus {
         outline: none;
       }
     }
-    
-    
+
+    .#{$namespace}counter {
+      font-family: $fontfamily;
+      font-size: 10px;
+      padding-left: 15px;
+      height: 10px;
+      box-sizing: border-box;
+      color: #999999;
+    }
+
+    .#{$namespace}counterError {
+      color: #DE2243;
+    }
+
+
     .#{$namespace}send {
       background: $grey-2;
       border: 0;
-      
+      height: 40px;
+
       .#{$namespace}send-icon {
         height: 25px;
       }
     }
-    
+
     @media screen and (max-width: 800px)  {
       .#{$namespace}sender {
         border-radius: 0;
         flex-shrink: 0;
       }
     }
-    
+
   }
 
   .#{$namespace}widget-embedded {

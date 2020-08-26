@@ -43,6 +43,7 @@ const WidgetLayout = (props) => {
             customComponent={props.customComponent}
             showMessageDate={props.showMessageDate}
             disableComposer={props.disableComposer}
+            counterText={props.counterText}
           />
         )}
         {!props.embedded && (

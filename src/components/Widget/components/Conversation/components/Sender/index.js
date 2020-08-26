@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -12,11 +12,21 @@ const Sender = ({
   disabledInput,
   userInput,
   showPersistentMenu,
-  disableComposer
+  disableComposer,
+  counterText
 }) => {
   if (userInput === 'hide') return <div />;
+  const [value, onChange] = useState('');
+  const onSubmit = useCallback((e) => {
+    sendMessage(e);
+    onChange('');
+  });
+  const showError = value.length >= 80;
+
+  const counterMessage = typeof counterText === 'function' ? counterText(value.length) : counterText;
+
   return (
-    <form className="rw-sender" onSubmit={sendMessage}>
+    <form className="rw-sender" onSubmit={onSubmit}>
       {showPersistentMenu ? (
         <PersistentMenu />
       ) : null}
@@ -33,15 +43,22 @@ const Sender = ({
           style={{ opacity: 0.5 }}
         />
       ) : (
-        <><input
-          type="text"
-          className="rw-new-message"
-          name="message"
-          placeholder={inputTextFieldHint}
-          disabled={disabledInput || userInput === 'disable'}
-          autoFocus
-          autoComplete="off"
-        /><button type="submit" className="rw-send">
+        <><div className="rw-input-holder">
+          <input
+            type="text"
+            className="rw-new-message"
+            name="message"
+            placeholder={inputTextFieldHint}
+            disabled={disabledInput || userInput === 'disable'}
+            autoFocus
+            autoComplete="off"
+            onChange={e => onChange(e.target.value)}
+            value={value}
+          />
+          <div className={`rw-counter ${showError ? 'rw-counterError' : ''}`}>
+            {counterMessage}
+          </div>
+        </div><button type="submit" className="rw-send">
           <img src={send} className="rw-send-icon" alt="send" />
         </button></>
       )}
@@ -63,7 +80,8 @@ Sender.propTypes = {
   disabledInput: PropTypes.bool,
   userInput: PropTypes.string,
   showPersistentMenu: PropTypes.bool,
-  disableComposer: PropTypes.bool
+  disableComposer: PropTypes.bool,
+  counterText: PropTypes.oneOf([PropTypes.func, PropTypes.string])
 };
 
 export default connect(mapStateToProps)(Sender);
