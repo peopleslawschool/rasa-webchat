@@ -229,9 +229,9 @@ ConnectedWidget.defaultProps = {
   disableComposer: false,
   persistentMenuItems: [],
   counterText: (count) => {
+    if (count >= 80) return `${count} characters. Keep it short to help me understand.`;
     if (count === 1) return `${count} character`;
     if (count >= 1) return `${count} characters`;
-    if (count >= 80) return `${count} characters. Keep it short to help me understand.`;
     return '';
   },
   counterLimit: 80
